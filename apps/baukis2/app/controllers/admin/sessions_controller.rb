@@ -1,4 +1,4 @@
-class Adminn::SessionsController < Adminn::Base
+class Admin::SessionsController < Admin::Base
     def new
         if current_administrator
             redirect_to :admin_root
@@ -12,7 +12,7 @@ class Adminn::SessionsController < Adminn::Base
         @form = Admin::LoginForm.new(params[:admin_login_form])
         if @form.email.present?
             administrator =
-                AdminMember.find_by("LOWER(email) = ?", @form.email.downcase)
+                Administrator.find_by("LOWER(email) = ?", @form.email.downcase)
         end
         if Admin::Authenticator.new(administrator).authenticate(@form.password)
             if administrator.suspended?
