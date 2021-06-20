@@ -8,11 +8,12 @@
 
     <table class="attributes">
     <tr>
-    <th>氏名</hth>
+    <th>氏名</th>
     <td>
         <%= @staff_member.family_name %>
         <%= @staff_member.given_name %>
     </td>
+    </tr>
     <tr>
         <th>フリガナ</th>
         <td>
@@ -32,6 +33,6 @@
             <%= @staff_member.start_date.strftime("%Y/%m/%d") %>
         </td>
     </tr>
-    </table
+    </table>
 </div>
 
