@@ -1,5 +1,9 @@
 require "rails_helper"
 
+describe "管理者によるログイン管理", "ログイン前" do
+    include_examples "a protected admin controller", "admin/staff_members"
+end
+
 describe "管理者による職員管理" do
     let(:administrator) { create(:administrator) }
 
@@ -42,7 +46,7 @@ describe "管理者による職員管理" do
         example "hashed_passwordの値は書き換え不可" do
             params_hash.delete(:password)
             params_hash.merge!(hashed_password: "x")
-            expect{
+      expect {
                 patch admin_staff_member_url(staff_member),
                     params: { staff_member: params_hash }
             }.not_to change { staff_member.hashed_password.to_s }

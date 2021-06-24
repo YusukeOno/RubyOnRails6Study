@@ -1,5 +1,9 @@
 require "rails_helper"
 
+describe "職員による自分のアカウントの管理", "ログイン前" do
+    include_examples "a protected singular staff controller", "staff/accounts"
+end
+
 describe "職員による自分のアカウントの管理" do
     before do
         post staff_session_url,
@@ -24,7 +28,7 @@ describe "職員による自分のアカウントの管理" do
         end
 
         example "例外ActionController::ParameterMissingが発生" do
-            expect { patch staff_account_url, params: { id: staff_member.id }}.
+      expect { patch staff_account_url, params: { id: staff_member.id } }.
             to raise_error(ActionController::ParameterMissing)
         end
 
