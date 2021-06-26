@@ -27,6 +27,12 @@ describe "職員による自分のアカウントの管理" do
             get staff_account_url
             expect(response).to redirect_to(staff_root_url)
         end
+
+        example "セッションタイムアウト" do
+            travel_to redirect_to(staff_root_url)
+            get staff_account_url
+            expect(response).to redirect_to(staff_root_url)
+        end
     end
 
     describe "更新" do
