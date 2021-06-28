@@ -32,7 +32,7 @@ describe "ルーティング" do
     end
 
     example "ホスト名が対象外ならroutableではない" do
-        expect(get: "http://fo.example.jp").not_to be_routable
+    expect(get: "http://foo.example.com").not_to be_routable
     end
 
     example "存在しないパスならroutableではない" do
