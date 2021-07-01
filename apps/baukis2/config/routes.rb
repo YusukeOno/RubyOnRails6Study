@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   config = Rails.application.config.baukis2
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   constraints host: config[:staff][:host] do
     namespace :staff, path: config[:staff][:path] do
       root "top#index"
@@ -16,7 +15,10 @@ Rails.application.routes.draw do
       root "top#index"
       get "login" => "sessions#new", as: :login
       resource :session, only: [ :create, :destroy ]
-      resources :staff_members
+      resources :staff_members do
+        resources :staff_events, only: [ :index ]
+      end
+      resources :staff_events, only: [ :index ]
     end
   end
 
