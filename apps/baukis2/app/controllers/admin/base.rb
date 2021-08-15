@@ -35,7 +35,7 @@ class Admin::Base < ApplicationController
                 session[:admin_last_access_time] = Time.current
             else
                 session.delete(:administrator_id)
-                flash_alert = "セッションがタイムアウトしました。"
+        flash.alert = "セッションがタイムアウトしました。"
                 redirect_to :admin_login
             end
         end
