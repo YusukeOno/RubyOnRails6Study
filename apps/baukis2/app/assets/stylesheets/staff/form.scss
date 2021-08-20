@@ -53,6 +53,7 @@ div#wrapper {
           color: $red;
           font-size: $small;
           padding: 0 $very_wide;
+          input { background-color: $pink; }
         }
       }
     }
