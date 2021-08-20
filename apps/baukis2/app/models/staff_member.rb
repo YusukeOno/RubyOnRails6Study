@@ -4,7 +4,7 @@ class StaffMember < ApplicationRecord
   has_many :events, class_name: "StaffEvent", dependent: :destroy
 
   before_validation do
-    self.email = normalize_as_name(email)
+    self.email = normalize_as_email(email)
     self.family_name = normalize_as_name(family_name)
     self.given_name = normalize_as_name(given_name)
     self.family_name_kana = normalize_as_furigana(family_name_kana)
@@ -22,7 +22,7 @@ class StaffMember < ApplicationRecord
       format: { with: KATAKANA_REGEXP, allow_blank: true }
     validates :start_date, presence: true, date: {
       after_or_equal_to: Date.new(2000, 1, 1),
-      before: -> (obj) {1.year.from_now.to_date},
+    before: -> (obj) { 1.year.from_now.to_date },
       allow_blank: true
     }
     validates :end_date, date: {
