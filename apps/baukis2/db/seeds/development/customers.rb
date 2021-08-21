@@ -44,11 +44,11 @@ company_names = %w(OIAX ABC XYZ)
             gender: m < 5 ? "male" : "female"
         )
         c.create_home_address!(
-        　　 postal_code: sprintf("%07d", rand(10000000)),
-        　　 prefecture: Address::PREFECTURE_NAMES.sample,
-        　　 city: city_names.sample,
-        　　 address1: "開発1-2-3",
-        　　 address2: "レイルズハイツ301号室"
+            postal_code: sprintf("%07d", rand(10000000)),
+            prefecture: Address::PREFECTURE_NAMES.sample,
+            city: city_names.sample,
+            address1: "開発1-2-3",
+            address2: "レイルズハイツ301号室"
         )
         if m % 3 == 0
             c.create_work_address!(
